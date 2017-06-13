@@ -1,0 +1,12 @@
+<h2> Add SubCategory </h2>
+
+<%= form_for @sub_category do |f| %>
+<%= f.label :name %><br/>
+<%= f.text_field :name %><br/><br/>
+
+<%= f.label :category_id %><br/>
+<%= f.collection_select :category_id, Category.all, :id, :name, prompt: "Select Category" %><br/><br>
+
+<%= f.submit "Submit" %>
+
+<%end%>

@@ -1,0 +1,16 @@
+<h2>My Review : <%= @reviews.length %> </h2>
+
+<%= link_to "My Reviews", reviews_path %>
+
+
+<% if @reviews.empty? %>
+		<p>You are yet to write a review </p>
+		<% else %>
+		<ul>
+			<% @reviews.each do |review| %>
+			<li><%= review.title %>
+			 -- <%= review.body %></li>
+			<% end %>
+		</ul>
+	<%end%>
+

@@ -1,0 +1,38 @@
+<h2>Add Product</h2>
+<%= form_for @product do |f| %>
+	<% if @product.errors.any? %>
+	<h3> Errors: </h3>
+		<ul>
+			<% @product.errors.full_messages.each do |msg|%>
+			<li> <%= msg %></li>
+			<%end%>
+		</ul>
+	<%end%>
+
+<%= f.label :name %> <br/>
+<%= f.text_field :name %><br/>
+
+<%= f.label :description %><br/>
+<%= f.text_area :description, rows:15, cols: 50 %><br/>
+
+<%= f.label :price %><br/>
+<%= f.text_field :price %><br/>
+
+<%= f.label :category_id %><br/>
+<%= f.collection_select :category_id, Category.all, :id, :formatted_name, prompt: "Select Category" %><br/> <!-- Here we can also use :formatted_name (method defined in models) as the third attribute. The :id refers to the primary key of source-->
+
+<%= f.label :sub_category_id %><br/>
+<%= f.collection_select :sub_category_id, SubCategory.all, :id, :formatted_name, prompt: "Select SubCategory" %><br/>
+
+<%= f.label :stock %><br/>
+<%= f.text_field :stock %><br/>
+
+<%= f.label :cod_eligibility %><br/>
+<%= f.check_box :cod_eligibility %><br/>
+
+<%= f.label :image_url %><br/>
+<%= f.text_field :image_url %><br/>
+
+<%= f.submit "submit" %>
+
+<%end%>

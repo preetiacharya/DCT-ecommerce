@@ -1,0 +1,11 @@
+<h2><%= @sub_category.name %></h2>
+
+<% if user_signed_in? && current_user.is_admin %>
+<%= link_to "Edit", edit_sub_category_path(@sub_category.id) %>
+<%= link_to "Destroy", sub_category_path(@sub_category.id), method: :delete, data: {confirm: "Are you sure?"} %>
+<% end %>
+
+<p>Name : <%= @sub_category.name %> </p>
+<p>Category_id : <%= link_to @sub_category.category.name, category_path(@sub_category.category_id) %></p>
+
+<%= link_to "Back", sub_categories_path %>

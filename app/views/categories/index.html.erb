@@ -1,0 +1,29 @@
+<h2>Listing Categories : <%= @categories.length %></h2>
+
+<% if user_signed_in? && current_user.is_admin %>
+<%= link_to "Add category", new_category_path %> <!-- target: "_blank" can be used to open link in a new page. -->
+<%end%>
+	<% if @categories.empty? %>
+		<p>Categories have not been added yet. </p>
+		<% else %>
+		<ol>
+			<% @categories.each do |category| %>
+			<li><%= link_to category.name, category_path(category.id) %>
+				(<%= Product.where('category_id = ?', category.id).length %>)
+
+				<!-- <%= link_to "show", category_path(category.id) %> -->
+			</li>
+			<% end %>
+		</ol>
+	<% end %>
+
+
+ 
+<!--#Here _blank opens a new page.-->
+<!-- new_category_path returns string "/categories/new" -->
+
+<!--<%= link_to "Add category (ror)", "/categories/new" %> |-->
+
+<!--<a href="/categories/new">Add category</a>-->
+
+<%# link_to "Add Product", new_product_path%>

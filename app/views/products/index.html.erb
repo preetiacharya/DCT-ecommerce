@@ -1,0 +1,17 @@
+<h2>Listing Products : <%= @products.length %></h2>
+
+<% if user_signed_in? && current_user.is_admin %>
+<%= link_to "Add product", new_product_path %>
+<%end%>
+
+	<% if @products.empty? %>
+		<p>No products found </p>
+		<% else %>
+		<ul>
+			<% @products.each do |product| %>
+			<li><%= link_to product.name, product_path(product.id) %>
+			INR <%= product.price %> -- <%= product.category.name %></li>
+			<% end %>
+		</ul>
+	<%end%>
+

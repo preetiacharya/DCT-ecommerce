@@ -6,6 +6,8 @@ class Product < ActiveRecord::Base
   belongs_to :category
   belongs_to :sub_category
 
+  has_many :order_products
+
   #inbuilt validations
   validates_presence_of :name, :price, :category_id, :description, :stock, :sub_category_id
   validates_numericality_of :price, greater_than: 1

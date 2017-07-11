@@ -8,6 +8,8 @@ class CategoriesController < ApplicationController
   update
   destroy
 =end
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :check_is_admin, except: [:index, :show]
 
   def index
     @categories = Category.all

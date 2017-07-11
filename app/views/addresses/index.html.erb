@@ -1,0 +1,18 @@
+<h3>My addresses</h3>
+
+<%= link_to "My Addresses", addresses_path %>
+
+<% if @addresses.empty? %>
+		<p>Please enter your address </p>
+		<% else %>
+		<ul>
+			<% @addresses.each do |address| %>
+			<li><%= address.street %>
+			 -- <%= address.city %>
+			 -- <%= address.pin %>
+			 -- <%= address.title %>
+			 </li>
+			<% end %>
+		</ul>
+	<%end%>
+

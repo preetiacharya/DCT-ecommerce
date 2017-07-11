@@ -1,5 +1,7 @@
 class SubCategoriesController < ApplicationController
 
+  before_action :check_is_admin, except: [:index, :show]
+
   def index
     @sub_categories = SubCategory.all
   end
